@@ -1,61 +1,41 @@
 [gd_scene format=3 uid="uid://dnma7rfthtkar"]
 
 [ext_resource type="Texture2D" uid="uid://dd0sft4gw5hw1" path="res://assets/backgrounds/bg_left_01.png" id="1"]
-[ext_resource type="Texture2D" uid="uid://6rw4o4kgx5s5" path="res://assets/lanterns/lantern_01.png" id="2"]
-[ext_resource type="Texture2D" uid="uid://d2p7www5lm340" path="res://assets/lanterns/lantern_02.png" id="3"]
-[ext_resource type="Texture2D" uid="uid://brvsgfvyqdntm" path="res://assets/lanterns/lantern_03.png" id="4"]
-[ext_resource type="Texture2D" uid="uid://ct0buqfkdbyon" path="res://assets/lanterns/lantern_04.png" id="5"]
-[ext_resource type="Texture2D" uid="uid://drilwtdvvr7ua" path="res://assets/lanterns/lantern_05.png" id="6"]
-[ext_resource type="Texture2D" uid="uid://042rd86j08fn" path="res://assets/lanterns/lantern_06.png" id="7"]
-[ext_resource type="Texture2D" uid="uid://ce1og8k6bxcli" path="res://assets/lanterns/lantern_07.png" id="8"]
-[ext_resource type="Texture2D" uid="uid://bnge46j2hl0ph" path="res://assets/lanterns/lantern_08.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://drmawiy75ik00" path="res://assets/vehicles/vehicle_A_01.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://kv4j3qduwa57" path="res://assets/vehicles/vehicle_B_01.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://bvb630ma7xxre" path="res://assets/vehicles/vehicle_C_01.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://bu20ryk5c1qu8" path="res://assets/vehicles/vehicle_D_01.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://buyhpsp4rgvga" path="res://assets/vehicles/vehicle_E_01.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://c65f4aj2r607u" path="res://assets/vehicles/vehicle_F_01.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://chb2l1u8ylcst" path="res://assets/vehicles/vehicle_G_01.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://dwc1vptpnhusy" path="res://assets/vehicles/vehicle_H_01.png" id="9"]
 [ext_resource type="Texture2D" uid="uid://cof8e3p3cpkn2" path="res://assets/buttons/layer1/confirm_normal.png" id="10"]
 [ext_resource type="Texture2D" uid="uid://cgmsmbklnssn8" path="res://assets/buttons/layer1/confirm_pressed.png" id="11"]
-[ext_resource type="Texture2D" uid="uid://dg0ki017fc1jm" path="res://assets/character/character_frame_01.svg" id="12"]
-[ext_resource type="Texture2D" uid="uid://cg2nol4is52xq" path="res://assets/character/character_frame_02.svg" id="13"]
-[ext_resource type="Texture2D" uid="uid://g3vg4tvfkyvx" path="res://assets/character/character_frame_03.svg" id="14"]
 [ext_resource type="Script" uid="uid://bvqf2llg17lp6" path="res://scripts/left_main_menu.gd" id="15"]
+[ext_resource type="Texture2D" uid="uid://fyjkfdudd133" path="res://assets/vehicles/vehicle_I_01.png" id="16"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_lanterns"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_vehicles"]
 
-[sub_resource type="Animation" id="Animation_lantern_selected"]
+[sub_resource type="Animation" id="Animation_vehicle_selected"]
 resource_name = "selected"
-length = 1.4
-loop_mode = 1
+length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ButtonCenter:rotation")
+tracks/0/path = NodePath("ButtonCenter:scale")
 tracks/0/interp = 1
-tracks/0/loop_wrap = true
+tracks/0/loop_wrap = false
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.35, 0.7, 1.05, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.16, 0.34, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [0.0, -0.09, 0.0, 0.09, 0.0]
+"values": [Vector2(1, 1), Vector2(1.08, 1.08), Vector2(0.96, 0.96), Vector2(1, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_lantern_selected"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vehicle_selected"]
 _data = {
-&"selected": SubResource("Animation_lantern_selected")
+&"selected": SubResource("Animation_vehicle_selected")
 }
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_character"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("12")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}]
 
 [node name="LeftMainMenu" type="Control" unique_id=829537477]
 layout_mode = 3
@@ -72,246 +52,269 @@ texture = ExtResource("1")
 
 [node name="MenuButtonsContainer" type="Control" parent="." unique_id=1294385963]
 anchors_preset = 0
-offset_left = 398.0
-offset_top = 160.0
-offset_right = 1522.0
-offset_bottom = 704.0
+offset_left = 353.0
+offset_top = 188.0
+offset_right = 1573.0
+offset_bottom = 936.0
 
 [node name="MenuButtonsGrid" type="GridContainer" parent="MenuButtonsContainer" unique_id=985764186]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 221.0
-offset_top = 52.0
-offset_right = 221.0
-offset_bottom = 52.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/h_separation = 36
-theme_override_constants/v_separation = 44
-columns = 4
+theme_override_constants/h_separation = 178
+theme_override_constants/v_separation = 6
+columns = 3
 
-[node name="LanternOption01" type="Control" parent="MenuButtonsContainer/MenuButtonsGrid" unique_id=2053613001]
+[node name="VehicleOption01" type="Control" parent="MenuButtonsContainer/MenuButtonsGrid" unique_id=2053613001]
 custom_minimum_size = Vector2(240, 220)
 layout_mode = 2
 
-[node name="ButtonCenter" type="CenterContainer" parent="MenuButtonsContainer/MenuButtonsGrid/LanternOption01" unique_id=506106702]
+[node name="ButtonCenter" type="CenterContainer" parent="MenuButtonsContainer/MenuButtonsGrid/VehicleOption01" unique_id=506106702]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 133.0
-offset_bottom = 60.0
+offset_left = 17.825
+offset_top = 30.435
+offset_right = 115.82501
+offset_bottom = 35.434998
 grow_horizontal = 2
 grow_vertical = 2
-rotation = 0.050620586
-pivot_offset = Vector2(195, 146)
+pivot_offset = Vector2(164.17499, 100.565)
 
-[node name="Button" type="TextureButton" parent="MenuButtonsContainer/MenuButtonsGrid/LanternOption01/ButtonCenter" unique_id=1386105055]
+[node name="Button" type="TextureButton" parent="MenuButtonsContainer/MenuButtonsGrid/VehicleOption01/ButtonCenter" unique_id=1386105055]
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_lanterns")
+button_group = SubResource("ButtonGroup_vehicles")
 texture_normal = ExtResource("2")
 texture_pressed = ExtResource("2")
 
-[node name="FloatingPlayer" type="AnimationPlayer" parent="MenuButtonsContainer/MenuButtonsGrid/LanternOption01" unique_id=902992829]
-libraries/ = SubResource("AnimationLibrary_lantern_selected")
+[node name="FloatingPlayer" type="AnimationPlayer" parent="MenuButtonsContainer/MenuButtonsGrid/VehicleOption01" unique_id=902992829]
+libraries/ = SubResource("AnimationLibrary_vehicle_selected")
 
-[node name="LanternOption02" type="Control" parent="MenuButtonsContainer/MenuButtonsGrid" unique_id=1255429467]
+[node name="VehicleOption02" type="Control" parent="MenuButtonsContainer/MenuButtonsGrid" unique_id=1255429467]
 custom_minimum_size = Vector2(240, 220)
 layout_mode = 2
 
-[node name="ButtonCenter" type="CenterContainer" parent="MenuButtonsContainer/MenuButtonsGrid/LanternOption02" unique_id=717785049]
+[node name="ButtonCenter" type="CenterContainer" parent="MenuButtonsContainer/MenuButtonsGrid/VehicleOption02" unique_id=717785049]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1.0253917
-offset_top = -1.4882518
-offset_right = 134.02539
-offset_bottom = 58.51175
+offset_top = 51.945
+offset_right = 141.0
+offset_bottom = 37.945007
 grow_horizontal = 2
 grow_vertical = 2
-rotation = -0.00046154502
-pivot_offset = Vector2(192.40808, 133.6643)
+pivot_offset = Vector2(198, 104.05499)
 
-[node name="Button" type="TextureButton" parent="MenuButtonsContainer/MenuButtonsGrid/LanternOption02/ButtonCenter" unique_id=553231215]
+[node name="Button" type="TextureButton" parent="MenuButtonsContainer/MenuButtonsGrid/VehicleOption02/ButtonCenter" unique_id=553231215]
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_lanterns")
+button_group = SubResource("ButtonGroup_vehicles")
 texture_normal = ExtResource("3")
 texture_pressed = ExtResource("3")
 
-[node name="FloatingPlayer" type="AnimationPlayer" parent="MenuButtonsContainer/MenuButtonsGrid/LanternOption02" unique_id=1291254617]
-libraries/ = SubResource("AnimationLibrary_lantern_selected")
+[node name="FloatingPlayer" type="AnimationPlayer" parent="MenuButtonsContainer/MenuButtonsGrid/VehicleOption02" unique_id=1291254617]
+libraries/ = SubResource("AnimationLibrary_vehicle_selected")
 
-[node name="LanternOption03" type="Control" parent="MenuButtonsContainer/MenuButtonsGrid" unique_id=1057803862]
+[node name="VehicleOption03" type="Control" parent="MenuButtonsContainer/MenuButtonsGrid" unique_id=1057803862]
 custom_minimum_size = Vector2(240, 220)
 layout_mode = 2
 
-[node name="ButtonCenter" type="CenterContainer" parent="MenuButtonsContainer/MenuButtonsGrid/LanternOption03" unique_id=1476189338]
+[node name="ButtonCenter" type="CenterContainer" parent="MenuButtonsContainer/MenuButtonsGrid/VehicleOption03" unique_id=1476189338]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 133.0
-offset_bottom = 60.0
+offset_left = -19.63
+offset_top = 64.13
+offset_right = 147.37
+offset_bottom = 32.130035
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(196, 139)
+pivot_offset = Vector2(209.63, 90.869995)
 
-[node name="Button" type="TextureButton" parent="MenuButtonsContainer/MenuButtonsGrid/LanternOption03/ButtonCenter" unique_id=54568949]
+[node name="Button" type="TextureButton" parent="MenuButtonsContainer/MenuButtonsGrid/VehicleOption03/ButtonCenter" unique_id=54568949]
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_lanterns")
+button_group = SubResource("ButtonGroup_vehicles")
 texture_normal = ExtResource("4")
 texture_pressed = ExtResource("4")
 
-[node name="FloatingPlayer" type="AnimationPlayer" parent="MenuButtonsContainer/MenuButtonsGrid/LanternOption03" unique_id=812716752]
-libraries/ = SubResource("AnimationLibrary_lantern_selected")
+[node name="FloatingPlayer" type="AnimationPlayer" parent="MenuButtonsContainer/MenuButtonsGrid/VehicleOption03" unique_id=812716752]
+libraries/ = SubResource("AnimationLibrary_vehicle_selected")
 
-[node name="LanternOption04" type="Control" parent="MenuButtonsContainer/MenuButtonsGrid" unique_id=1853625811]
+[node name="VehicleOption04" type="Control" parent="MenuButtonsContainer/MenuButtonsGrid" unique_id=1853625811]
 custom_minimum_size = Vector2(240, 220)
 layout_mode = 2
 
-[node name="ButtonCenter" type="CenterContainer" parent="MenuButtonsContainer/MenuButtonsGrid/LanternOption04" unique_id=1287892086]
+[node name="ButtonCenter" type="CenterContainer" parent="MenuButtonsContainer/MenuButtonsGrid/VehicleOption04" unique_id=1287892086]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 133.0
-offset_bottom = 60.0
+offset_left = 8.465
+offset_top = 8.195
+offset_right = 141.465
+offset_bottom = 68.19501
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(198, 135)
+pivot_offset = Vector2(189.535, 134.805)
 
-[node name="Button" type="TextureButton" parent="MenuButtonsContainer/MenuButtonsGrid/LanternOption04/ButtonCenter" unique_id=268266463]
+[node name="Button" type="TextureButton" parent="MenuButtonsContainer/MenuButtonsGrid/VehicleOption04/ButtonCenter" unique_id=268266463]
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_lanterns")
+button_group = SubResource("ButtonGroup_vehicles")
 texture_normal = ExtResource("5")
 texture_pressed = ExtResource("5")
 
-[node name="FloatingPlayer" type="AnimationPlayer" parent="MenuButtonsContainer/MenuButtonsGrid/LanternOption04" unique_id=273969003]
-libraries/ = SubResource("AnimationLibrary_lantern_selected")
+[node name="FloatingPlayer" type="AnimationPlayer" parent="MenuButtonsContainer/MenuButtonsGrid/VehicleOption04" unique_id=273969003]
+libraries/ = SubResource("AnimationLibrary_vehicle_selected")
 
-[node name="LanternOption05" type="Control" parent="MenuButtonsContainer/MenuButtonsGrid" unique_id=896498536]
+[node name="VehicleOption05" type="Control" parent="MenuButtonsContainer/MenuButtonsGrid" unique_id=896498536]
 custom_minimum_size = Vector2(240, 220)
 layout_mode = 2
 
-[node name="ButtonCenter" type="CenterContainer" parent="MenuButtonsContainer/MenuButtonsGrid/LanternOption05" unique_id=1834585817]
+[node name="ButtonCenter" type="CenterContainer" parent="MenuButtonsContainer/MenuButtonsGrid/VehicleOption05" unique_id=1834585817]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 133.0
-offset_bottom = 60.0
+offset_left = 3.955
+offset_top = 7.17
+offset_right = 136.95499
+offset_bottom = 67.17001
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(192, 140)
+pivot_offset = Vector2(189.04498, 143.82999)
 
-[node name="Button" type="TextureButton" parent="MenuButtonsContainer/MenuButtonsGrid/LanternOption05/ButtonCenter" unique_id=629756123]
+[node name="Button" type="TextureButton" parent="MenuButtonsContainer/MenuButtonsGrid/VehicleOption05/ButtonCenter" unique_id=629756123]
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_lanterns")
+button_group = SubResource("ButtonGroup_vehicles")
 texture_normal = ExtResource("6")
 texture_pressed = ExtResource("6")
 
-[node name="FloatingPlayer" type="AnimationPlayer" parent="MenuButtonsContainer/MenuButtonsGrid/LanternOption05" unique_id=1425649125]
-libraries/ = SubResource("AnimationLibrary_lantern_selected")
+[node name="FloatingPlayer" type="AnimationPlayer" parent="MenuButtonsContainer/MenuButtonsGrid/VehicleOption05" unique_id=1425649125]
+libraries/ = SubResource("AnimationLibrary_vehicle_selected")
 
-[node name="LanternOption06" type="Control" parent="MenuButtonsContainer/MenuButtonsGrid" unique_id=625992464]
+[node name="VehicleOption06" type="Control" parent="MenuButtonsContainer/MenuButtonsGrid" unique_id=625992464]
 custom_minimum_size = Vector2(240, 220)
 layout_mode = 2
 
-[node name="ButtonCenter" type="CenterContainer" parent="MenuButtonsContainer/MenuButtonsGrid/LanternOption06" unique_id=1674634813]
+[node name="ButtonCenter" type="CenterContainer" parent="MenuButtonsContainer/MenuButtonsGrid/VehicleOption06" unique_id=1674634813]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 14.31
 offset_right = 133.0
-offset_bottom = 60.0
+offset_bottom = 74.31
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(190, 132)
+pivot_offset = Vector2(182, 141.69)
 
-[node name="Button" type="TextureButton" parent="MenuButtonsContainer/MenuButtonsGrid/LanternOption06/ButtonCenter" unique_id=2022588165]
+[node name="Button" type="TextureButton" parent="MenuButtonsContainer/MenuButtonsGrid/VehicleOption06/ButtonCenter" unique_id=2022588165]
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_lanterns")
+button_group = SubResource("ButtonGroup_vehicles")
 texture_normal = ExtResource("7")
 texture_pressed = ExtResource("7")
 
-[node name="FloatingPlayer" type="AnimationPlayer" parent="MenuButtonsContainer/MenuButtonsGrid/LanternOption06" unique_id=1489288369]
-libraries/ = SubResource("AnimationLibrary_lantern_selected")
+[node name="FloatingPlayer" type="AnimationPlayer" parent="MenuButtonsContainer/MenuButtonsGrid/VehicleOption06" unique_id=1489288369]
+libraries/ = SubResource("AnimationLibrary_vehicle_selected")
 
-[node name="LanternOption07" type="Control" parent="MenuButtonsContainer/MenuButtonsGrid" unique_id=1815825455]
+[node name="VehicleOption07" type="Control" parent="MenuButtonsContainer/MenuButtonsGrid" unique_id=1815825455]
 custom_minimum_size = Vector2(240, 220)
 layout_mode = 2
 
-[node name="ButtonCenter" type="CenterContainer" parent="MenuButtonsContainer/MenuButtonsGrid/LanternOption07" unique_id=1281849952]
+[node name="ButtonCenter" type="CenterContainer" parent="MenuButtonsContainer/MenuButtonsGrid/VehicleOption07" unique_id=1281849952]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 8.07
 offset_right = 133.0
-offset_bottom = 60.0
+offset_bottom = 68.07001
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(197, 142)
+pivot_offset = Vector2(179, 143.93)
 
-[node name="Button" type="TextureButton" parent="MenuButtonsContainer/MenuButtonsGrid/LanternOption07/ButtonCenter" unique_id=2052519714]
+[node name="Button" type="TextureButton" parent="MenuButtonsContainer/MenuButtonsGrid/VehicleOption07/ButtonCenter" unique_id=2052519714]
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_lanterns")
+button_group = SubResource("ButtonGroup_vehicles")
 texture_normal = ExtResource("8")
 texture_pressed = ExtResource("8")
 
-[node name="FloatingPlayer" type="AnimationPlayer" parent="MenuButtonsContainer/MenuButtonsGrid/LanternOption07" unique_id=1659133835]
-libraries/ = SubResource("AnimationLibrary_lantern_selected")
+[node name="FloatingPlayer" type="AnimationPlayer" parent="MenuButtonsContainer/MenuButtonsGrid/VehicleOption07" unique_id=1659133835]
+libraries/ = SubResource("AnimationLibrary_vehicle_selected")
 
-[node name="LanternOption08" type="Control" parent="MenuButtonsContainer/MenuButtonsGrid" unique_id=2065039483]
+[node name="VehicleOption08" type="Control" parent="MenuButtonsContainer/MenuButtonsGrid" unique_id=2065039483]
 custom_minimum_size = Vector2(240, 220)
 layout_mode = 2
 
-[node name="ButtonCenter" type="CenterContainer" parent="MenuButtonsContainer/MenuButtonsGrid/LanternOption08" unique_id=1233178326]
+[node name="ButtonCenter" type="CenterContainer" parent="MenuButtonsContainer/MenuButtonsGrid/VehicleOption08" unique_id=1233178326]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 133.0
-offset_bottom = 60.0
+offset_left = 2.105
+offset_top = -4.25
+offset_right = 135.10501
+offset_bottom = 55.75
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(195, 137)
+pivot_offset = Vector2(195.89502, 138.25)
 
-[node name="Button" type="TextureButton" parent="MenuButtonsContainer/MenuButtonsGrid/LanternOption08/ButtonCenter" unique_id=758541375]
+[node name="Button" type="TextureButton" parent="MenuButtonsContainer/MenuButtonsGrid/VehicleOption08/ButtonCenter" unique_id=758541375]
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_lanterns")
+button_group = SubResource("ButtonGroup_vehicles")
 texture_normal = ExtResource("9")
 texture_pressed = ExtResource("9")
 
-[node name="FloatingPlayer" type="AnimationPlayer" parent="MenuButtonsContainer/MenuButtonsGrid/LanternOption08" unique_id=505878460]
-libraries/ = SubResource("AnimationLibrary_lantern_selected")
+[node name="FloatingPlayer" type="AnimationPlayer" parent="MenuButtonsContainer/MenuButtonsGrid/VehicleOption08" unique_id=505878460]
+libraries/ = SubResource("AnimationLibrary_vehicle_selected")
+
+[node name="VehicleOption09" type="Control" parent="MenuButtonsContainer/MenuButtonsGrid" unique_id=818328711]
+custom_minimum_size = Vector2(240, 220)
+layout_mode = 2
+
+[node name="ButtonCenter" type="CenterContainer" parent="MenuButtonsContainer/MenuButtonsGrid/VehicleOption09" unique_id=203884607]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.96
+offset_top = 7.1
+offset_right = 126.04001
+offset_bottom = 67.100006
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(211.95996, 144.90002)
+
+[node name="Button" type="TextureButton" parent="MenuButtonsContainer/MenuButtonsGrid/VehicleOption09/ButtonCenter" unique_id=1719335993]
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_vehicles")
+texture_normal = ExtResource("16")
+texture_pressed = ExtResource("16")
+
+[node name="FloatingPlayer" type="AnimationPlayer" parent="MenuButtonsContainer/MenuButtonsGrid/VehicleOption09" unique_id=2087934163]
+libraries/ = SubResource("AnimationLibrary_vehicle_selected")
 
 [node name="ConfirmButton" type="TextureButton" parent="." unique_id=1655034199]
 visible = false
 layout_mode = 0
 offset_left = 1450.0
-offset_top = 842.0
+offset_top = 876.0
 offset_right = 1980.0
-offset_bottom = 997.0
+offset_bottom = 1031.0
 scale = Vector2(0.7, 0.7)
 texture_normal = ExtResource("10")
 texture_pressed = ExtResource("11")
-
-[node name="CharacterAnimation" type="Node2D" parent="." unique_id=1307160369]
-position = Vector2(92, 676)
-
-[node name="CharacterSprite" type="AnimatedSprite2D" parent="CharacterAnimation" unique_id=1211401405]
-scale = Vector2(0.78, 0.78)
-sprite_frames = SubResource("SpriteFrames_character")
-animation = &"idle"
-centered = false

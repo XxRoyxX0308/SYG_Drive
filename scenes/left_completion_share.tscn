@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://cgfpt4cacvkfh"]
 
 [ext_resource type="Texture2D" uid="uid://cc0hf4tqda415" path="res://assets/backgrounds/bg_left_03.png" id="1"]
-[ext_resource type="Texture2D" uid="uid://xpm43sl3rxmv" path="res://assets/buttons/layer3/home_normal.svg" id="2"]
-[ext_resource type="Texture2D" uid="uid://d0jgybkvwtsfl" path="res://assets/buttons/layer3/home_pressed.svg" id="3"]
-[ext_resource type="Texture2D" uid="uid://bm8mpp7lcmtyl" path="res://assets/buttons/layer3/capture_normal.svg" id="4"]
-[ext_resource type="Texture2D" uid="uid://ckhcdyhij7wf5" path="res://assets/buttons/layer3/capture_pressed.svg" id="5"]
+[ext_resource type="Texture2D" uid="uid://bue371di35le1" path="res://assets/buttons/layer3/home_normal.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://dq40mquuxqge" path="res://assets/buttons/layer3/home_pressed.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://fjpwlsquaj0d" path="res://assets/buttons/layer3/capture_normal.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://c710760uapn41" path="res://assets/buttons/layer3/capture_pressed.png" id="5"]
 [ext_resource type="Script" uid="uid://dg4jw6qgk7rq1" path="res://scripts/left_completion_share.gd" id="6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vs4m8"]

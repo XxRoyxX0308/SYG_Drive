@@ -1,7 +1,0 @@
-<svg width="320" height="108" viewBox="0 0 320 108" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect x="6" y="6" width="308" height="96" rx="28" fill="#EEF7F0" stroke="#3F6F58" stroke-width="12"/>
-  <rect x="76" y="33" width="86" height="52" rx="16" fill="#78A487" stroke="#2E5542" stroke-width="8"/>
-  <circle cx="119" cy="59" r="14" fill="#EEF7F0"/>
-  <path d="M95 33L104 21H134L143 33" stroke="#2E5542" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="183" y="68" fill="#2E5542" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">CAPTURE</text>
-</svg>

@@ -1,29 +1,26 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://c2jjjsq45eh01"]
 
-[ext_resource type="Texture2D" path="res://assets/backgrounds/bg_right.png" id="1"]
-[ext_resource type="Script" path="res://scripts/right_display_shared.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://cwsokxbdkka7w" path="res://assets/backgrounds/bg_right.png" id="1"]
+[ext_resource type="Script" uid="uid://ea2rlq63i7jv" path="res://scripts/right_display_shared.gd" id="2"]
 
-[node name="RightDisplayShared" type="Control"]
+[node name="RightDisplayShared" type="Control" unique_id=1754062277]
+layout_mode = 3
+anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 script = ExtResource("2")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="." unique_id=1092171268]
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("1")
 
-[node name="SkyLanternsContainer" type="Node2D" parent="."]
+[node name="TrafficVehicles" type="Node2D" parent="." unique_id=1276634186]
 
-[node name="HistoryLanterns" type="Node2D" parent="SkyLanternsContainer"]
+[node name="TopLane" type="Node2D" parent="TrafficVehicles" unique_id=63178327]
+position = Vector2(0, 167.895)
 
-[node name="LatestLanterns" type="Node2D" parent="SkyLanternsContainer"]
+[node name="BottomLane" type="Node2D" parent="TrafficVehicles" unique_id=898354233]
 z_index = 10
-
-[node name="DriftOrigin" type="Marker2D" parent="SkyLanternsContainer"]
-position = Vector2(960, 860)
-
-[node name="LatestFrontAnchor" type="Marker2D" parent="SkyLanternsContainer"]
-position = Vector2(960, 220)
-
-[node name="LanternMotionPlayer" type="AnimationPlayer" parent="SkyLanternsContainer"]
+position = Vector2(0, 260.645)

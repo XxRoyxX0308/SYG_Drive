@@ -72,7 +72,7 @@ func _on_main_menu_confirm(style_id: int) -> void:
 
 func _on_drawing_confirm(drawing_texture: Texture2D) -> void:
 	latest_drawing_texture = drawing_texture
-	right_display.spawn_lantern(drawing_texture, selected_style_id)
+	right_display.spawn_vehicle(drawing_texture, selected_style_id)
 	_show_state(AppState.COMPLETE)
 
 

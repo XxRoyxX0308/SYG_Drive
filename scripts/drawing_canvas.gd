@@ -3,9 +3,18 @@ extends Control
 @export var brush_color := Color(0.31, 0.16, 0.08, 1.0)
 @export_range(1.0, 24.0, 1.0) var brush_width := 8.0
 
+const MASK_ALPHA_THRESHOLD := 0.01
+
 var _strokes: Array = []
 var _current_stroke := PackedVector2Array()
 var _is_drawing := false
+var _mask_texture_rect: TextureRect = null
+var _mask_image: Image = null
+
+
+func _ready() -> void:
+	_mask_texture_rect = get_parent().get_node_or_null("Canvas") as TextureRect
+	_refresh_mask_image()
 
 
 func _gui_input(event: InputEvent) -> void:
@@ -70,17 +79,28 @@ func build_texture() -> Texture2D:
 
 
 func _begin_stroke(point: Vector2) -> void:
-	_is_drawing = true
 	var clamped_point := _clamp_point(point)
-	_current_stroke = PackedVector2Array([clamped_point, clamped_point])
+	if not _is_drawable_point(clamped_point):
+		_is_drawing = false
+		_current_stroke = PackedVector2Array()
+		queue_redraw()
+		return
+
+	_start_stroke(clamped_point)
 	queue_redraw()
 
 
 func _append_point(point: Vector2) -> void:
-	if not _is_drawing:
+	var clamped_point: Vector2 = _clamp_point(point)
+	if not _is_drawable_point(clamped_point):
+		_end_stroke()
 		return
 
-	var clamped_point: Vector2 = _clamp_point(point)
+	if not _is_drawing:
+		_start_stroke(clamped_point)
+		queue_redraw()
+		return
+
 	var last_index: int = _current_stroke.size() - 1
 	if last_index >= 0 and _current_stroke[last_index].distance_to(clamped_point) < 1.0:
 		return
@@ -141,8 +161,57 @@ func _stamp_circle(image: Image, center: Vector2, radius: int) -> void:
 	for y in range(min_y, max_y + 1):
 		for x in range(min_x, max_x + 1):
 			var pixel_center := Vector2(x + 0.5, y + 0.5)
-			if pixel_center.distance_squared_to(center) <= radius_squared:
+			if pixel_center.distance_squared_to(center) <= radius_squared and _is_drawable_point(pixel_center):
 				image.set_pixel(x, y, brush_color)
+
+
+func _start_stroke(point: Vector2) -> void:
+	_is_drawing = true
+	_current_stroke = PackedVector2Array([point, point])
+
+
+func _refresh_mask_image() -> void:
+	if _mask_texture_rect == null or _mask_texture_rect.texture == null:
+		_mask_image = null
+		return
+
+	_mask_image = _mask_texture_rect.texture.get_image()
+	if _mask_image == null:
+		return
+
+	_mask_image.convert(Image.FORMAT_RGBA8)
+
+
+func _is_drawable_point(point: Vector2) -> bool:
+	if _mask_image == null or _mask_texture_rect == null:
+		return true
+
+	var canvas_local: Vector2 = point + position - _mask_texture_rect.position
+	var display_rect: Rect2 = _get_mask_display_rect()
+	if not display_rect.has_point(canvas_local):
+		return false
+
+	var uv: Vector2 = (canvas_local - display_rect.position) / display_rect.size
+	var pixel_x: int = mini(_mask_image.get_width() - 1, maxi(0, int(floor(uv.x * _mask_image.get_width()))))
+	var pixel_y: int = mini(_mask_image.get_height() - 1, maxi(0, int(floor(uv.y * _mask_image.get_height()))))
+	return _mask_image.get_pixel(pixel_x, pixel_y).a > MASK_ALPHA_THRESHOLD
+
+
+func _get_mask_display_rect() -> Rect2:
+	if _mask_texture_rect == null or _mask_texture_rect.texture == null:
+		return Rect2(Vector2.ZERO, size)
+
+	var texture_size: Vector2 = _mask_texture_rect.texture.get_size()
+	if texture_size.x <= 0.0 or texture_size.y <= 0.0:
+		return Rect2(Vector2.ZERO, _mask_texture_rect.size)
+
+	var scale_factor: float = minf(
+		_mask_texture_rect.size.x / texture_size.x,
+		_mask_texture_rect.size.y / texture_size.y
+	)
+	var displayed_size: Vector2 = texture_size * scale_factor
+	var displayed_position: Vector2 = (_mask_texture_rect.size - displayed_size) * 0.5
+	return Rect2(displayed_position, displayed_size)
 
 
 func _clamp_point(point: Vector2) -> Vector2:

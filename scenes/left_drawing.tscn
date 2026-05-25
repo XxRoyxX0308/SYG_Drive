@@ -2,34 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://ct6c8htt8wpft" path="res://assets/backgrounds/bg_left_02.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://dsj3gr0pv5yte" path="res://assets/buttons/layer2/confirm_normal.png" id="3"]
-[ext_resource type="Texture2D" uid="uid://dxbkyd6ftgljr" path="res://assets/canvas/drawing_canvas_placeholder.svg" id="3_5e3fh"]
+[ext_resource type="Texture2D" uid="uid://bjrjus4f8mhvm" path="res://assets/canvas/drawing_canva.png" id="3_5e3fh"]
 [ext_resource type="Texture2D" uid="uid://bpede5j3t65gt" path="res://assets/buttons/layer2/confirm_pressed.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://bmkaegatgnph8" path="res://assets/buttons/layer2/clear_normal.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://cu8m5sda4u8ef" path="res://assets/buttons/layer2/clear_pressed.png" id="6"]
-[ext_resource type="Texture2D" uid="uid://dg0ki017fc1jm" path="res://assets/character/character_frame_01.svg" id="7"]
-[ext_resource type="Texture2D" uid="uid://cg2nol4is52xq" path="res://assets/character/character_frame_02.svg" id="8"]
-[ext_resource type="Texture2D" uid="uid://g3vg4tvfkyvx" path="res://assets/character/character_frame_03.svg" id="9"]
 [ext_resource type="Script" uid="uid://d1ds2kruxns2r" path="res://scripts/left_drawing.gd" id="10"]
 [ext_resource type="Script" uid="uid://bmfpjn3pqet1r" path="res://scripts/drawing_canvas.gd" id="11"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5e3fh"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_character"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}]
 
 [node name="LeftDrawing" type="Control" unique_id=1695526806]
 layout_mode = 3
@@ -46,20 +26,19 @@ texture = ExtResource("1")
 
 [node name="DrawingCanvas" type="Panel" parent="." unique_id=1596697205]
 layout_mode = 0
-offset_left = 746.0
-offset_top = 269.0
-offset_right = 1731.0
-offset_bottom = 859.48
+offset_left = 437.0
+offset_top = 215.0
+offset_right = 1479.0
+offset_bottom = 870.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_5e3fh")
 
-[node name="CanvasPlaceholder" type="TextureRect" parent="DrawingCanvas" unique_id=1852011679]
-layout_mode = 0
+[node name="Canvas" type="TextureRect" parent="DrawingCanvas" unique_id=1852011679]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = -2.3449707
-offset_bottom = -1.5
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("3_5e3fh")
 expand_mode = 1
@@ -95,12 +74,3 @@ texture_pressed = ExtResource("6")
 layout_mode = 2
 texture_normal = ExtResource("3")
 texture_pressed = ExtResource("4")
-
-[node name="CharacterAnimation" type="Node2D" parent="." unique_id=910274231]
-position = Vector2(75, 575)
-
-[node name="CharacterSprite" type="AnimatedSprite2D" parent="CharacterAnimation" unique_id=180418565]
-scale = Vector2(0.78, 0.78)
-sprite_frames = SubResource("SpriteFrames_character")
-animation = &"idle"
-centered = false
