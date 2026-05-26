@@ -311,10 +311,10 @@ libraries/ = SubResource("AnimationLibrary_vehicle_selected")
 [node name="ConfirmButton" type="TextureButton" parent="." unique_id=1655034199]
 visible = false
 layout_mode = 0
-offset_left = 1450.0
-offset_top = 876.0
-offset_right = 1980.0
-offset_bottom = 1031.0
+offset_left = 855.29
+offset_top = 948.48
+offset_right = 1385.2896
+offset_bottom = 1103.4795
 scale = Vector2(0.7, 0.7)
 texture_normal = ExtResource("10")
 texture_pressed = ExtResource("11")

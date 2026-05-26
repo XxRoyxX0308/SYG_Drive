@@ -24,10 +24,11 @@ texture = ExtResource("1")
 
 [node name="QRCodeDisplay" type="Panel" parent="." unique_id=732842996]
 layout_mode = 0
-offset_left = 1016.0
-offset_top = 163.0
-offset_right = 1636.0
-offset_bottom = 783.0
+offset_left = 466.00003
+offset_top = 743.99994
+offset_right = 1086.0
+offset_bottom = 1364.0
+scale = Vector2(0.435, 0.435)
 theme_override_styles/panel = SubResource("StyleBoxEmpty_vs4m8")
 
 [node name="QRCodeGuide" type="ColorRect" parent="QRCodeDisplay" unique_id=47857954]
@@ -45,14 +46,17 @@ offset_left = 32.0
 offset_top = 32.0
 offset_right = -32.0
 offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="FunctionalButtons" type="HBoxContainer" parent="." unique_id=374530132]
+[node name="FunctionalButtons" type="VBoxContainer" parent="." unique_id=553064800]
 layout_mode = 0
-offset_left = 986.0
-offset_top = 878.0
-offset_right = 1806.0
-offset_bottom = 994.0
-theme_override_constants/separation = 36
+offset_left = 805.0
+offset_top = 744.0
+offset_right = 1105.0
+offset_bottom = 991.0
+theme_override_constants/separation = 94
+alignment = 1
 
 [node name="BackToMenuButton" type="TextureButton" parent="FunctionalButtons" unique_id=797114749]
 layout_mode = 2

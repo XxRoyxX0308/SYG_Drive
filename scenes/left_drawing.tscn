@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bpede5j3t65gt" path="res://assets/buttons/layer2/confirm_pressed.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://bmkaegatgnph8" path="res://assets/buttons/layer2/clear_normal.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://cu8m5sda4u8ef" path="res://assets/buttons/layer2/clear_pressed.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://dygv106nlsqe5" path="res://assets/backgrounds/vehicles_left_02.png" id="9_6yo25"]
 [ext_resource type="Script" uid="uid://d1ds2kruxns2r" path="res://scripts/left_drawing.gd" id="10"]
 [ext_resource type="Script" uid="uid://bmfpjn3pqet1r" path="res://scripts/drawing_canvas.gd" id="11"]
 
@@ -26,10 +27,10 @@ texture = ExtResource("1")
 
 [node name="DrawingCanvas" type="Panel" parent="." unique_id=1596697205]
 layout_mode = 0
-offset_left = 437.0
-offset_top = 215.0
-offset_right = 1479.0
-offset_bottom = 870.0
+offset_left = 438.0
+offset_top = 218.0
+offset_right = 1480.0
+offset_bottom = 873.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_5e3fh")
 
 [node name="Canvas" type="TextureRect" parent="DrawingCanvas" unique_id=1852011679]
@@ -59,11 +60,12 @@ script = ExtResource("11")
 
 [node name="ActionButtons" type="HBoxContainer" parent="." unique_id=297700356]
 layout_mode = 0
-offset_left = 1147.0
-offset_top = 930.0
-offset_right = 1705.0
-offset_bottom = 1032.0
+offset_left = 642.0
+offset_top = 917.0
+offset_right = 1271.0
+offset_bottom = 1019.0
 theme_override_constants/separation = 28
+alignment = 1
 
 [node name="ClearButton" type="TextureButton" parent="ActionButtons" unique_id=571586699]
 layout_mode = 2
@@ -74,3 +76,11 @@ texture_pressed = ExtResource("6")
 layout_mode = 2
 texture_normal = ExtResource("3")
 texture_pressed = ExtResource("4")
+
+[node name="vehicle" type="TextureRect" parent="." unique_id=1522939255]
+layout_mode = 0
+offset_left = 274.0
+offset_top = 587.0
+offset_right = 656.0
+offset_bottom = 882.0
+texture = ExtResource("9_6yo25")
