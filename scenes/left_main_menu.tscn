@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dnma7rfthtkar"]
 
 [ext_resource type="Texture2D" uid="uid://dd0sft4gw5hw1" path="res://assets/backgrounds/bg_left_01.png" id="1"]
-[ext_resource type="Texture2D" uid="uid://drmawiy75ik00" path="res://assets/vehicles/vehicle_A_01.png" id="2"]
-[ext_resource type="Texture2D" uid="uid://kv4j3qduwa57" path="res://assets/vehicles/vehicle_B_01.png" id="3"]
-[ext_resource type="Texture2D" uid="uid://bvb630ma7xxre" path="res://assets/vehicles/vehicle_C_01.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://cal5wmattakb6" path="res://assets/vehicles/vehicle_A_01.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://oavtfei46u56" path="res://assets/vehicles/vehicle_B_01.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://cqv6p7qnhh4p4" path="res://assets/vehicles/vehicle_C_01.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://bu20ryk5c1qu8" path="res://assets/vehicles/vehicle_D_01.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://buyhpsp4rgvga" path="res://assets/vehicles/vehicle_E_01.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://c65f4aj2r607u" path="res://assets/vehicles/vehicle_F_01.png" id="7"]
@@ -77,10 +77,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 17.825
-offset_top = 30.435
-offset_right = 115.82501
-offset_bottom = 35.434998
+offset_left = -3.6749992
+offset_top = 44.434998
+offset_right = 137.32501
+offset_bottom = 49.434998
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(164.17499, 100.565)
@@ -104,9 +104,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 51.945
-offset_right = 141.0
-offset_bottom = 37.945007
+offset_left = -13.0
+offset_top = 60.945
+offset_right = 154.0
+offset_bottom = 46.945007
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(198, 104.05499)
@@ -130,10 +131,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -19.63
-offset_top = 64.13
+offset_left = -19.629997
+offset_top = 31.630013
 offset_right = 147.37
-offset_bottom = 32.130035
+offset_bottom = 36.630005
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(209.63, 90.869995)
@@ -158,9 +159,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 8.465
-offset_top = 8.195
+offset_top = 19.195
 offset_right = 141.465
-offset_bottom = 68.19501
+offset_bottom = 79.19501
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(189.535, 134.805)
@@ -185,9 +186,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 3.955
-offset_top = 7.17
+offset_top = 22.169998
 offset_right = 136.95499
-offset_bottom = 67.17001
+offset_bottom = 82.16998
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(189.04498, 143.82999)
@@ -211,9 +212,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 14.31
+offset_top = 26.310001
 offset_right = 133.0
-offset_bottom = 74.31
+offset_bottom = 86.31
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(182, 141.69)
@@ -237,9 +238,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 8.07
+offset_top = 18.07
 offset_right = 133.0
-offset_bottom = 68.07001
+offset_bottom = 78.07001
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(179, 143.93)
@@ -264,9 +265,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 2.105
-offset_top = -4.25
+offset_top = -1.25
 offset_right = 135.10501
-offset_bottom = 55.75
+offset_bottom = 58.75
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(195.89502, 138.25)
@@ -291,9 +292,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -6.96
-offset_top = 7.1
+offset_top = 16.099998
 offset_right = 126.04001
-offset_bottom = 67.100006
+offset_bottom = 76.100006
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(211.95996, 144.90002)

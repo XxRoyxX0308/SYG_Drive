@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dygv106nlsqe5"
-path="res://.godot/imported/vehicles_left_02.png-d354c45a50082d0471ddaff186f3a2b6.ctex"
+uid="uid://c3v1se2ay62tl"
+path="res://.godot/imported/platform.png-9c7963a687613a5adcd398736ef3cc5e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/vehicles_left_02.png"
-dest_files=["res://.godot/imported/vehicles_left_02.png-d354c45a50082d0471ddaff186f3a2b6.ctex"]
+source_file="res://assets/backgrounds/platform.png"
+dest_files=["res://.godot/imported/platform.png-9c7963a687613a5adcd398736ef3cc5e.ctex"]
 
 [params]
 

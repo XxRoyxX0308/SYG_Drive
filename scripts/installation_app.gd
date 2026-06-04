@@ -21,6 +21,7 @@ const LEFT_SCENES := {
 var current_state: int = AppState.MAIN_MENU
 var current_left_scene = null
 var selected_style_id := 0
+var selected_vehicle_texture: Texture2D = null
 var latest_drawing_texture: Texture2D = null
 var latest_uploaded_url := ""
 var _upload_request: HTTPRequest = null
@@ -55,6 +56,7 @@ func _wire_left_scene() -> void:
 		AppState.DRAWING:
 			current_left_scene.confirm_requested.connect(_on_drawing_confirm)
 			current_left_scene.reset_view()
+			current_left_scene.set_vehicle_texture(selected_vehicle_texture)
 		AppState.COMPLETE:
 			current_left_scene.home_requested.connect(_on_home_requested)
 			current_left_scene.screenshot_requested.connect(_on_screenshot_requested)
@@ -67,6 +69,7 @@ func _on_main_menu_confirm(style_id: int) -> void:
 		return
 
 	selected_style_id = style_id
+	selected_vehicle_texture = right_display._get_primary_vehicle_texture(selected_style_id)
 	_show_state(AppState.DRAWING)
 
 
@@ -127,6 +130,7 @@ func _on_home_requested() -> void:
 
 func _reset_application() -> void:
 	selected_style_id = 0
+	selected_vehicle_texture = null
 	latest_drawing_texture = null
 	latest_uploaded_url = ""
 
