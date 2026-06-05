@@ -79,6 +79,7 @@ texture_normal = ExtResource("3")
 texture_pressed = ExtResource("4")
 
 [node name="Figurine" type="Panel" parent="." unique_id=1069544550]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0

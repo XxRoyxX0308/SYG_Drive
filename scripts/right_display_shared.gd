@@ -17,6 +17,8 @@ class VehicleEntry:
 	var drawing_texture: Texture2D = null
 	var is_user_vehicle := false
 	var is_active := false
+	var is_retiring := false
+	var force_top_lane := false
 	var refresh_serial := 0
 
 
@@ -251,22 +253,79 @@ func _launch_next_vehicle() -> bool:
 	if _vehicle_entries.is_empty():
 		return false
 
-	var entry: VehicleEntry = _vehicle_entries[_launch_cursor]
-	if entry.is_active:
-		return false
+	var start_clean_cursor = _launch_cursor
+	while _vehicle_entries[_launch_cursor].is_retiring or _vehicle_entries[_launch_cursor].is_active:
+		_launch_cursor = (_launch_cursor + 1) % _vehicle_entries.size()
+		if _launch_cursor == start_clean_cursor:
+			return false
 
-	entry.lane_index = _get_lane_for_launch_order(_launch_count)
-	entry.next_lane_index = _get_opposite_lane(entry.lane_index)
-	entry.is_active = true
-	entry.progress_distance = 0.0
-	_update_entry_transform(entry)
+	var safe_distance := vehicle_speed * auto_spawn_interval * 1.5 
+	var top_safe = true
+	var bottom_safe = true
 
-	_launch_cursor = (_launch_cursor + 1) % _vehicle_entries.size()
-	_launch_count += 1
-	return true
+	for entry_data in _vehicle_entries:
+		var e: VehicleEntry = entry_data
+		if e.is_active:
+			if e.progress_distance < safe_distance:
+				if e.lane_index == TOP_LANE:
+					top_safe = false
+				else:
+					bottom_safe = false
+
+	var attempts = 0
+	while attempts < _vehicle_entries.size():
+		var check_idx = (_launch_cursor + attempts) % _vehicle_entries.size()
+		var entry: VehicleEntry = _vehicle_entries[check_idx]
+		
+		if entry.is_retiring or entry.is_active:
+			attempts += 1
+			continue
+			
+		var wants_top = entry.force_top_lane or _get_lane_for_launch_order(_launch_count) == TOP_LANE
+		var target_lane = TOP_LANE if wants_top else BOTTOM_LANE
+		
+		if (target_lane == TOP_LANE and not top_safe) or (target_lane == BOTTOM_LANE and not bottom_safe):
+			attempts += 1
+			continue
+			
+		if attempts > 0:
+			_vehicle_entries[check_idx] = _vehicle_entries[_launch_cursor]
+			_vehicle_entries[_launch_cursor] = entry
+			
+		if entry.force_top_lane:
+			entry.lane_index = TOP_LANE
+			entry.force_top_lane = false
+			if posmod(_launch_count, 2) != 0:
+				_launch_count += 1
+		else:
+			entry.lane_index = target_lane
+			
+		entry.next_lane_index = _get_opposite_lane(entry.lane_index)
+		entry.is_active = true
+		entry.progress_distance = 0.0
+		_update_entry_transform(entry)
+
+		_launch_cursor = (_launch_cursor + 1) % _vehicle_entries.size()
+		_launch_count += 1
+		return true
+		
+	return false
 
 
 func _handle_entry_despawn(entry: VehicleEntry) -> void:
+	if entry.is_retiring:
+		var idx = _vehicle_entries.find(entry)
+		if idx != -1:
+			if idx < _launch_cursor:
+				_launch_cursor -= 1
+			_vehicle_entries.remove_at(idx)
+			if not _vehicle_entries.is_empty():
+				_launch_cursor = posmod(_launch_cursor, _vehicle_entries.size())
+			else:
+				_launch_cursor = 0
+		entry.root.queue_free()
+		return
+
 	_set_entry_waiting(entry)
 	_apply_waiting_replacements()
 
@@ -279,14 +338,48 @@ func _set_entry_waiting(entry: VehicleEntry) -> void:
 
 
 func _apply_waiting_replacements() -> void:
+	var insert_offset := 0
 	while not _pending_user_requests.is_empty():
 		var oldest_entry: VehicleEntry = _get_oldest_entry()
-		if oldest_entry == null or oldest_entry.is_active:
+		if oldest_entry == null:
 			return
 
 		var request: PendingUserVehicleRequest = _pending_user_requests[0]
 		_pending_user_requests.remove_at(0)
-		_apply_request_to_entry(oldest_entry, request)
+		
+		if not oldest_entry.is_active:
+			_apply_request_to_entry(oldest_entry, request)
+			oldest_entry.force_top_lane = true
+			
+			var idx = _vehicle_entries.find(oldest_entry)
+			var target_idx = (_launch_cursor + insert_offset) % _vehicle_entries.size()
+			if idx != target_idx:
+				_vehicle_entries.remove_at(idx)
+				if idx < _launch_cursor:
+					_launch_cursor -= 1
+				target_idx = (_launch_cursor + insert_offset) % (_vehicle_entries.size() + 1)
+				_vehicle_entries.insert(target_idx, oldest_entry)
+			insert_offset += 1
+		else:
+			oldest_entry.is_retiring = true
+			
+			var new_entry := VehicleEntry.new()
+			new_entry.root = Node2D.new()
+			new_entry.root.name = "Vehicle_%02d" % (_spawn_counter + 1)
+			new_entry.root.z_index = 100 + _spawn_counter
+			_spawn_counter += 1
+			new_entry.root.scale = Vector2.ONE * vehicle_scale
+			new_entry.sprite = AnimatedSprite2D.new()
+			new_entry.root.add_child(new_entry.sprite)
+			new_entry.dialog_box = Sprite2D.new()
+			new_entry.root.add_child(new_entry.dialog_box)
+
+			_apply_request_to_entry(new_entry, request)
+			new_entry.force_top_lane = true
+
+			var insert_pos = (_launch_cursor + insert_offset) % (_vehicle_entries.size() + 1)
+			_vehicle_entries.insert(insert_pos, new_entry)
+			insert_offset += 1
 
 
 func _apply_request_to_entry(entry: VehicleEntry, request: PendingUserVehicleRequest) -> void:
@@ -302,6 +395,8 @@ func _get_oldest_entry() -> VehicleEntry:
 	var oldest_entry: VehicleEntry = null
 	for entry_data in _vehicle_entries:
 		var entry: VehicleEntry = entry_data
+		if entry.is_retiring:
+			continue
 		if oldest_entry == null or entry.refresh_serial < oldest_entry.refresh_serial:
 			oldest_entry = entry
 	return oldest_entry
