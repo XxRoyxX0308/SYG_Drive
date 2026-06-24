@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cgfpt4cacvkfh"]
 
-[ext_resource type="Texture2D" uid="uid://cc0hf4tqda415" path="res://assets/backgrounds/bg_left_03.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://dtf57chpgul51" path="res://assets/backgrounds/bg_left_03.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://bue371di35le1" path="res://assets/buttons/layer3/home_normal.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://dq40mquuxqge" path="res://assets/buttons/layer3/home_pressed.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://fjpwlsquaj0d" path="res://assets/buttons/layer3/capture_normal.png" id="4"]
@@ -24,10 +24,10 @@ texture = ExtResource("1")
 
 [node name="QRCodeDisplay" type="Panel" parent="." unique_id=732842996]
 layout_mode = 0
-offset_left = 466.00003
-offset_top = 743.99994
-offset_right = 1086.0
-offset_bottom = 1364.0
+offset_left = 458.0
+offset_top = 778.99994
+offset_right = 1078.0
+offset_bottom = 1399.0
 scale = Vector2(0.435, 0.435)
 theme_override_styles/panel = SubResource("StyleBoxEmpty_vs4m8")
 
@@ -51,11 +51,11 @@ grow_vertical = 2
 
 [node name="FunctionalButtons" type="VBoxContainer" parent="." unique_id=553064800]
 layout_mode = 0
-offset_left = 805.0
-offset_top = 744.0
-offset_right = 1105.0
-offset_bottom = 991.0
-theme_override_constants/separation = 94
+offset_left = 811.0
+offset_top = 773.0
+offset_right = 1111.0004
+offset_bottom = 1020.0
+theme_override_constants/separation = 53
 alignment = 1
 
 [node name="BackToMenuButton" type="TextureButton" parent="FunctionalButtons" unique_id=797114749]
